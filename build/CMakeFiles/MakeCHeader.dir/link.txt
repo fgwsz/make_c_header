@@ -1,3 +1,0 @@
-D:\Mingw\bin\mingw64\bin\cmake.exe -E rm -f CMakeFiles\MakeCHeader.dir/objects.a
-D:\Mingw\bin\mingw64\bin\ar.exe qc CMakeFiles\MakeCHeader.dir/objects.a @CMakeFiles\MakeCHeader.dir\objects1.rsp
-D:\Mingw\bin\mingw64\bin\gcc.exe -Wl,--whole-archive CMakeFiles\MakeCHeader.dir/objects.a -Wl,--no-whole-archive -o MakeCHeader.exe -Wl,--out-implib,libMakeCHeader.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MakeCHeader.dir\linkLibs.rsp

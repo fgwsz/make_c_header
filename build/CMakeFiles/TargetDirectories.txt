@@ -1,3 +1,0 @@
-D:/Git/userdata/make_c_header/build/CMakeFiles/MakeCHeader.dir
-D:/Git/userdata/make_c_header/build/CMakeFiles/edit_cache.dir
-D:/Git/userdata/make_c_header/build/CMakeFiles/rebuild_cache.dir
