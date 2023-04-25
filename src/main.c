@@ -21,13 +21,13 @@ int main(int argc,char*argv[]){
         }
     }
     #define M_BUFFER_BYTE_SIZE 1024
-    #define M_BUFFER_STRLEN (M_BUFFER_BYTE_SIZE>0?(M_BUFFER_BYTE_SIZE-1):0)
+    #define M_BUFFER_MAX_STRLEN (M_BUFFER_BYTE_SIZE>0?(M_BUFFER_BYTE_SIZE-1):0)
     char buffer[M_BUFFER_BYTE_SIZE];
     memset(buffer,0,sizeof buffer);
     pwd(buffer,sizeof buffer);
     printf("pwd:%s\n",buffer);
     size_t buffer_length=strlen(buffer);
-    if(buffer_length>M_BUFFER_STRLEN){
+    if(buffer_length>M_BUFFER_MAX_STRLEN){
         printf("pwd length is too long!\n");
         return -3;
     }
