@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
-# set the project name
-project(make_c_header)
-aux_source_directory(src SRC_LIST)
+project(make_c_header VERSION 0.0.1 LANGUAGES C)
+set(CMAKE_C_STANDARD 11)
+aux_source_directory(src SRC_DIR)
 include_directories(include)
-# add the executable
-add_executable(${PROJECT_NAME} ${SRC_LIST})
+add_executable(${PROJECT_NAME} ${SRC_DIR})
