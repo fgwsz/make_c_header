@@ -28,6 +28,8 @@ int main(int argc,char*argv[]){
     printf("pwd:%s\n",buffer);
     size_t buffer_length=strlen(buffer);
     if(buffer_length>M_BUFFER_MAX_STRLEN){
+    #undef M_BUFFER_BYTE_SIZE
+    #undef M_BUFFER_MAX_STRLEN
         printf("pwd length is too long!\n");
         return -3;
     }
@@ -62,11 +64,13 @@ int main(int argc,char*argv[]){
         }
     }
     printf("file name macro:%s\n",file_name_macro);
-    fprintf(file,"#ifndef HF_%s\n",file_name_macro);
-    fprintf(file,"#define HF_%s\n",file_name_macro);
-    fprintf(file,"#ifdef __cplusplus\n    extern \"C\"{\n#endif // __cplusplus\n\n");
+    fprintf(file,"#ifndef __HF_%s__\n",file_name_macro);
+    fprintf(file,"#define __HF_%s__\n",file_name_macro);
+    fprintf(file,"/* include header file */\n\n");
+    fprintf(file,"#ifdef __cplusplus\n    extern \"C\"{\n#endif // __cplusplus\n");
+    fprintf(file,"/* decl public interface */\n\n");
     fprintf(file,"#ifdef __cplusplus\n    }\n#endif // __cplusplus\n");
-    fprintf(file,"#endif // !HF_%s\n",file_name_macro);
+    fprintf(file,"#endif // !__HF_%s__\n",file_name_macro);
     fclose(file);
     memory_free((void*)file_path);
     return 0;
