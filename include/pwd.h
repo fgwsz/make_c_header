@@ -3,9 +3,9 @@
 #include<stddef.h> // size_t
 #ifdef __cplusplus
     extern "C"{
-#endif
+#endif // __cplusplus
 extern void pwd(char* buffer,size_t byte_size);
 #ifdef __cplusplus
     }
-#endif
-#endif
+#endif // __cplusplus
+#endif // !HF_PWD_H

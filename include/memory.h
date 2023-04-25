@@ -3,10 +3,10 @@
 #include<stddef.h> // size_t
 #ifdef __cplusplus
     extern "C"{
-#endif
+#endif // __cplusplus
 extern void* memory_alloc(size_t size);
 extern void  memory_free(void* ptr);
 #ifdef __cplusplus
     }
-#endif
-#endif//!HF_MEMORY_H
+#endif // __cplusplus
+#endif // !HF_MEMORY_H

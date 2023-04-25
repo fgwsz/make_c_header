@@ -3,9 +3,9 @@
 #include<stdbool.h> // bool
 #ifdef __cplusplus
     extern "C" {
-#endif
+#endif // __cplusplus
 extern bool file_exist(char const* file_path);
 #ifdef __cplusplus
     }
-#endif
-#endif
+#endif // __cplusplus
+#endif // !HF_FILE_EXIST_H

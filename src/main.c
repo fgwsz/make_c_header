@@ -64,8 +64,8 @@ int main(int argc,char*argv[]){
     printf("file name macro:%s\n",file_name_macro);
     fprintf(file,"#ifndef HF_%s\n",file_name_macro);
     fprintf(file,"#define HF_%s\n",file_name_macro);
-    fprintf(file,"#ifdef __cplusplus\n    extern \"C\"{\n#endif\n\n");
-    fprintf(file,"#ifdef __cplusplus\n    }\n#endif\n");
+    fprintf(file,"#ifdef __cplusplus\n    extern \"C\"{\n#endif // __cplusplus\n\n");
+    fprintf(file,"#ifdef __cplusplus\n    }\n#endif // __cplusplus\n");
     fprintf(file,"#endif // !HF_%s\n",file_name_macro);
     fclose(file);
     memory_free((void*)file_path);
