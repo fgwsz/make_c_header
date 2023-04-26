@@ -4,6 +4,7 @@
 #include"pwd.h" // pwd
 #include"file_exist.h" // file_exist
 #include"memory.h" // memory_alloc memory_free
+extern bool checkHeaderFilename(char const* header_filename);
 // argv[1]:c language header filename
 int main(int argc,char*argv[]){
     if(argc!=2){
@@ -11,27 +12,15 @@ int main(int argc,char*argv[]){
         return -1;
     }
     char* file_name=argv[1];
-    printf("file name:%s\n",file_name);
-    size_t file_name_byte_size=strlen(file_name)+1;
-    printf("file name byte size:%d\n",file_name_byte_size);
-    for(size_t index=0;index+1<file_name_byte_size;++index){
-        if(!(isalnum(file_name[index])||file_name[index]=='_'||file_name[index]=='.')){
-            printf("file name error\n");
-            return -2;
-        }
+    if(!checkHeaderFilename(file_name)){
+        printf("header filename error\n");
+        return -2;
     }
-    #define M_BUFFER_BYTE_SIZE 1024
-    #define M_BUFFER_MAX_STRLEN (M_BUFFER_BYTE_SIZE>0?(M_BUFFER_BYTE_SIZE-1):0)
-    char buffer[M_BUFFER_BYTE_SIZE];
-    memset(buffer,0,sizeof buffer);
-    pwd(buffer,sizeof buffer);
-    printf("pwd:%s\n",buffer);
-    size_t buffer_length=strlen(buffer);
-    if(buffer_length>M_BUFFER_MAX_STRLEN){
-    #undef M_BUFFER_BYTE_SIZE
-    #undef M_BUFFER_MAX_STRLEN
-        printf("pwd length is too long!\n");
-        return -3;
+// TODO
+    if(file_exist(file_path)){
+        printf("file path exist!\n");
+        memory_free((void*)file_path);
+        return -4;
     }
     printf("buffer length:%d\n",buffer_length);
     size_t file_path_byte_size=strlen(buffer)+strlen(file_name)+2;
@@ -42,11 +31,6 @@ int main(int argc,char*argv[]){
     strcat(file_path,"/");
     strcat(file_path,file_name);
     printf("file path:%s\n",file_path);
-    if(file_exist(file_path)){
-        printf("file path exist!\n");
-        memory_free((void*)file_path);
-        return -4;
-    }
     FILE* file=fopen(file_path,"w");
     if (file==NULL) {
         printf("file open error\n");
@@ -74,4 +58,15 @@ int main(int argc,char*argv[]){
     fclose(file);
     memory_free((void*)file_path);
     return 0;
+}
+bool checkHeaderFilename(char const* header_filename){
+    if(header_filename==NULL){
+        return false;
+    }
+    for(size_t index=0;index+1<strlen(header_filename);++index){
+        if(!(isalnum(file_name[index])||file_name[index]=='_'||file_name[index]=='.')){
+            return false;
+        }
+    }
+    return true;
 }
